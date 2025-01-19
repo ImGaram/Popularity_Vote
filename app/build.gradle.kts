@@ -41,6 +41,21 @@ android {
 
 dependencies {
 
+    // retrofit, okhttp
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // coil compose
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    // viewmodel compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // navigation compose
+    implementation(libs.androidx.navigation.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
