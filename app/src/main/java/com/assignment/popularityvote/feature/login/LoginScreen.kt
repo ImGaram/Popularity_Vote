@@ -23,6 +23,7 @@ import com.assignment.popularityvote.R
 import com.assignment.popularityvote.common.compose.PopularityVoteButton
 import com.assignment.popularityvote.common.compose.TopBar
 import com.assignment.popularityvote.common.font.Kantumruy
+import com.assignment.popularityvote.feature.login.component.LoginTextField
 import com.assignment.popularityvote.feature.util.UserId
 import com.assignment.popularityvote.ui.theme.Background
 import com.assignment.popularityvote.ui.theme.Primary
