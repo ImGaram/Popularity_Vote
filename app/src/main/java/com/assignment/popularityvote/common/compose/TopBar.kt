@@ -23,6 +23,7 @@ fun TopBar(
     modifier: Modifier = Modifier,
     title: String = "2024 WMU",
     backArrowEnable: Boolean = false,
+    exitEnable: Boolean = false,
     onBackArrowClick: () -> Unit = {},
     onExitClick: () -> Unit = {},
 ) {
@@ -55,12 +56,15 @@ fun TopBar(
 
         IconButton(
             onClick = onExitClick,
-            modifier = Modifier.padding(end = 16.dp)
+            modifier = Modifier.padding(end = 16.dp),
+            enabled = exitEnable
         ) {
-            Icon(
-                imageVector = Icons.Default.Clear,
-                contentDescription = "exit"
-            )
+            if (exitEnable) {
+                Icon(
+                    imageVector = Icons.Default.Clear,
+                    contentDescription = "exit"
+                )
+            }
         }
     }
 }
