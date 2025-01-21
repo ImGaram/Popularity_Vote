@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -41,11 +40,10 @@ import com.assignment.popularityvote.ui.theme.Background
 import com.assignment.popularityvote.ui.theme.Primary
 import com.assignment.popularityvote.ui.theme.White
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MainScreen(
     navigateToLogin: () -> Unit,
-    navigateToProfile: () -> Unit,
+    navigateToProfile: (Int) -> Unit,
     mainViewModel: MainViewModel = hiltViewModel()
 ) {
     val candidates by mainViewModel.candidates.collectAsState()
@@ -168,7 +166,7 @@ fun MainScreen(
                         candidates = candidates.response!!,
                         votedList = votedList.response!!,
                         onProfileItemClick = {
-                            navigateToProfile(/*it*/)
+                            navigateToProfile(it)
                         },
                         onVoteButtonItemClick = {
                             if (votedList.response!!.size < 3) {
