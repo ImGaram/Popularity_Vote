@@ -10,5 +10,5 @@ sealed class Screen {
     data object MainScreen: Screen()
 
     @Serializable
-    data object ProfileScreen: Screen()
+    data class ProfileScreen(val id: Int): Screen()
 }
