@@ -23,9 +23,6 @@ class MainViewModel @Inject constructor(
     private val voteRepository: VoteRepository
 ): ViewModel() {
 
-    // todo :: 2025년 2월 3일 0시까지의 카운트다운
-    //  후보자 목록 불러오기
-    //  사용자가 투표한 후보자 목록 불러오기
     private val _countdown = MutableStateFlow<List<String>?>(null)
     val countdown = _countdown.asStateFlow()
 
