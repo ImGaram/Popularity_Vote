@@ -32,9 +32,6 @@ class MainViewModel @Inject constructor(
     private val _votedList = MutableStateFlow(ResponseState<List<Int>>())
     val votedList = _votedList.asStateFlow()
 
-    private val _voted = MutableStateFlow(ResponseState<Unit>())
-    val voted = _voted.asStateFlow()
-
     fun setCountdown() {
         val current = System.currentTimeMillis()
         val goalDateMillis = LocalDateTime.of(2025, 2, 3, 0, 0)
@@ -121,27 +118,9 @@ class MainViewModel @Inject constructor(
                     userId = UserId.getInstance()!!,
                 )
             ).collect { res ->
-                when (res) {
-                    is Resources.Loading -> {
-                        _voted.update {
-                            it.copy(isLoading = res.isLoading)
-                        }
-                    }
-                    is Resources.Success -> {
-                        _voted.update {
-                            it.copy(response = res.data)
-                        }
-                        getAllCandidates()
-                        getVotedCandidates()
-                    }
-                    is Resources.Error -> {
-                        _voted.update {
-                            it.copy(
-                                isLoading = false,
-                                response = null
-                            )
-                        }
-                    }
+                if (res is Resources.Success) {
+                    getAllCandidates()
+                    getVotedCandidates()
                 }
             }
         }
