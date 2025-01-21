@@ -3,7 +3,8 @@ package com.assignment.popularityvote.common.compose
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -31,7 +32,7 @@ fun PopularityVoteButton(
     border: BorderStroke? = null,
     text: String = "text",
     textStyle: TextStyle = LocalTextStyle.current,
-    buttonIcon: @Composable () -> Unit = {}
+    buttonIcon: @Composable (() -> Unit)? = null
 ) {
     Button(
         onClick = onClick,
@@ -41,11 +42,14 @@ fun PopularityVoteButton(
         border = border
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            buttonIcon()
+            if (buttonIcon != null) {
+                buttonIcon()
+
+                Spacer(modifier = Modifier.width(4.dp))
+            }
 
             PopularityVoteText(
                 text = text,
-                modifier = Modifier.padding(start = 4.dp),
                 style = textStyle
             )
         }
