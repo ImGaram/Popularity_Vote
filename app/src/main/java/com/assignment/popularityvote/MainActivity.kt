@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
             composable<Screen.ProfileScreen> { backStackEntry ->
                 ProfileScreen(
                     navigateToMain = {
-                        navController.navigate(Screen.MainScreen)
+                        navController.popBackStack()
                     },
                     args = backStackEntry.toRoute<Screen.ProfileScreen>()
                 )
