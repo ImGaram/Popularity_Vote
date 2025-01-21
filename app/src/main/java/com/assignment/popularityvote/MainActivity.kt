@@ -3,7 +3,6 @@ package com.assignment.popularityvote
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -14,11 +13,12 @@ import com.assignment.popularityvote.feature.login.LoginScreen
 import com.assignment.popularityvote.feature.main.MainScreen
 import com.assignment.popularityvote.feature.profile.ProfileScreen
 import com.assignment.popularityvote.ui.theme.PopularityVoteTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             PopularityVoteTheme {
                 Navigation()
@@ -38,7 +38,6 @@ class MainActivity : ComponentActivity() {
             composable<Screen.LoginScreen> {
                 LoginScreen(
                     navigateToMain = {
-                        navController.popBackStack()
                         navController.navigate(Screen.MainScreen)
                     }
                 )
@@ -46,6 +45,9 @@ class MainActivity : ComponentActivity() {
 
             composable<Screen.MainScreen> {
                 MainScreen(
+                    navigateToLogin = {
+                        navController.popBackStack()
+                    },
                     navigateToProfile = {
                         navController.navigate(Screen.ProfileScreen)
                     }
