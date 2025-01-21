@@ -14,7 +14,7 @@ interface VoteApi {
     @POST("vote")
     suspend fun vote(@Body requestBody: VoteRequest): Unit?
 
-    @GET("vote/candidate")
+    @GET("vote/candidate/{id}")
     suspend fun getCandidateInfo(
         @Path("id") id: Int,
         @Query("userId") userId: String,
