@@ -4,13 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.assignment.popularityvote.common.navigation.Screen
+import com.assignment.popularityvote.feature.login.LoginScreen
+import com.assignment.popularityvote.feature.main.MainScreen
+import com.assignment.popularityvote.feature.profile.ProfileScreen
 import com.assignment.popularityvote.ui.theme.PopularityVoteTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +21,44 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PopularityVoteTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                Navigation()
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    @Composable
+    fun Navigation(modifier: Modifier = Modifier) {
+        val navController = rememberNavController()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PopularityVoteTheme {
-        Greeting("Android")
+        NavHost(
+            modifier = modifier,
+            navController = navController,
+            startDestination = Screen.LoginScreen
+        ) {
+            composable<Screen.LoginScreen> {
+                LoginScreen(
+                    navigateToMain = {
+                        navController.popBackStack()
+                        navController.navigate(Screen.MainScreen)
+                    }
+                )
+            }
+
+            composable<Screen.MainScreen> {
+                MainScreen(
+                    navigateToProfile = {
+                        navController.navigate(Screen.ProfileScreen)
+                    }
+                )
+            }
+
+            composable<Screen.ProfileScreen> {
+                ProfileScreen(
+                    navigateToMain = {
+                        navController.navigate(Screen.MainScreen)
+                    }
+                )
+            }
+        }
     }
 }

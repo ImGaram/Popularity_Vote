@@ -1,15 +1,10 @@
 package com.assignment.popularityvote.feature.main
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    navigateToProfile: () -> Unit
+) {
 
-}
-
-@Preview
-@Composable
-private fun MainScreenPreview() {
-    MainScreen()
 }
