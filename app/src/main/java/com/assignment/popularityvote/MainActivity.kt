@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.assignment.popularityvote.common.navigation.Screen
 import com.assignment.popularityvote.feature.login.LoginScreen
 import com.assignment.popularityvote.feature.main.MainScreen
@@ -49,16 +50,17 @@ class MainActivity : ComponentActivity() {
                         navController.popBackStack()
                     },
                     navigateToProfile = {
-                        navController.navigate(Screen.ProfileScreen)
+                        navController.navigate(Screen.ProfileScreen(it))
                     }
                 )
             }
 
-            composable<Screen.ProfileScreen> {
+            composable<Screen.ProfileScreen> { backStackEntry ->
                 ProfileScreen(
                     navigateToMain = {
                         navController.navigate(Screen.MainScreen)
-                    }
+                    },
+                    args = backStackEntry.toRoute<Screen.ProfileScreen>()
                 )
             }
         }
