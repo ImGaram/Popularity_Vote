@@ -6,19 +6,21 @@
 ## 🖥️ 화면 구성
 |로그인 화면|메인 화면|
 |:---:|:---:|
-|![로그인 화면](https://github.com/user-attachments/assets/f52f5a88-7ffe-4025-9191-d607b9551013)|![메인 화면](https://github.com/user-attachments/assets/c6ca8913-de05-4574-aed5-12b2768f6a61)|
+|<img src="https://github.com/user-attachments/assets/f52f5a88-7ffe-4025-9191-d607b9551013" height=550>|<img src="https://github.com/user-attachments/assets/c6ca8913-de05-4574-aed5-12b2768f6a61" height=550>|
 |사용자 ID를 입력받고 메인 화면으로 이동합니다.|인기투표 포스터, 투표와 관련한 정보, 인기투표 후보자 목록이 있습니다. <br>2025년 2월 3일에 종료되는 카운트다운이 표시됩니다.|
 
 |상세 정보 화면|투표하기|
 |:---:|:---:|
-|![상세정보 화면](https://github.com/user-attachments/assets/b66a1303-3be5-4edc-87ae-b15f7941b755)|![투표하기](https://github.com/user-attachments/assets/a856479d-bcd4-4df8-9a90-3808b6709868)|
+|<img src="https://github.com/user-attachments/assets/b66a1303-3be5-4edc-87ae-b15f7941b755" height=550>|<img src="https://github.com/user-attachments/assets/a856479d-bcd4-4df8-9a90-3808b6709868" height=550>|
 |후보자의 상세 정보를 표시합니다.|해당 후보자에게 투표를 진행합니다.<br> 한 번 투표한 후보자에게 재투표는 불가능하고, 최대 3명에게 투표할 수 있습니다.|
 <br>
 
 ## 🔨 사용 기술 스택
 - Retrofit
 - Okhttp
+- MVVM
 - Coil
+- Jetpack Compose
 - Compose navigation
 - Dagger hilt
 
