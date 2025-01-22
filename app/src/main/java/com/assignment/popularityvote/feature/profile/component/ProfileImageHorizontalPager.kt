@@ -3,6 +3,7 @@ package com.assignment.popularityvote.feature.profile.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -10,6 +11,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
+import coil3.compose.SubcomposeAsyncImage
 import com.assignment.popularityvote.core.data.response.ProfileInfo
 import com.assignment.popularityvote.ui.theme.Primary
 
@@ -33,10 +35,15 @@ fun ProfileImageHorizontalPager(
         modifier = modifier
     ) { page ->
         Box(contentAlignment = Alignment.BottomCenter) {
-            AsyncImage(
+            SubcomposeAsyncImage(
                 model = images[page].profileUrl,
                 contentDescription = "candidate profile url $page",
-                modifier = Modifier.fillMaxWidth(),
+                loading = {
+                    CircularProgressIndicator(color = Primary)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1f),
                 contentScale = ContentScale.FillWidth
             )
         }
